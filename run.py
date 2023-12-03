@@ -8,6 +8,13 @@ scores = {
 }
 grid_size = 5
 
+player_ship_coordinate = []
+player_guess_coordinate = []
+
+comp_ship_coordinate = []
+comp_guess_coordinate = []
+
+
 def g_size():
     """
     set the grid(board) size
@@ -41,6 +48,40 @@ def validate_g_size(value):
         return False
     return True
 
+def ran_row(size):
+    """
+    Random number between 1 and size-1
+    """
+    return random.randint(1,size-1)
+
+
+def ran_col(size):
+    """
+    Random number between 0 and size-1
+    """
+    return random.randint(0,size-1)
+
+
+def add_ships(board,ships):
+    """
+    """
+    for t in range(ships):
+        x = ran_row(ships)
+        y = ran_col(ships)
+        player_ship_coordinate.append((x,y))
+        board[x][y] = "@"
+
+
+def game_board(board,ships): 
+    """
+    """
+    add_ships(board,ships)
+    pprint(board)
+    for r in board:
+        g = (" ".join(r))
+        print(g)
+    return(g)
+
 
 def new_game():
     """
@@ -51,10 +92,20 @@ def new_game():
     print("-----------------------------------") 
     print( "Welcome to our BATTLESHIPS GAME!")
     print("-----------------------------------")
-    grid_size = g_size()
-    print( "Number of ships: 4")
+    grid_size = int(g_size())
+    #print( "Number of ships: 4")
     print(f"Grid size(board): {grid_size}")
+    num_ships = 4
+    print(f"Number of ships : {num_ships}")
     print("-----------------------------------")
+
+    # Game board without ships
+    g_board = [["." for i in range(grid_size)] for j in range(grid_size)]
+
+    print("-----------------------------------")   
+    name = input("Enter your name here:\n")
+    print(f"{name}'s board")
+    game_board(g_board, num_ships)
 
 
 new_game()
