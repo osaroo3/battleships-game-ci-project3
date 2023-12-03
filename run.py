@@ -36,11 +36,11 @@ def validate_g_size(value):
     Validate user input to set the grid(board) size
     """
     try:
-        grid_type =[4,5]
+        grid_type =[5,6]
         value = int(value)
         if value not in grid_type :
             raise ValueError(
-                f"Number 4 or 5 is required, you provided {value}"
+                f"Number 5 or 6 is required, you provided {value}"
             )
         
     except ValueError as e:
@@ -48,35 +48,46 @@ def validate_g_size(value):
         return False
     return True
 
-def ran_row(size):
+def ran_one(size):
     """
     Random number between 1 and size-1
     """
     return random.randint(1,size-1)
 
 
-def ran_col(size):
+def ran_two(size):
     """
     Random number between 0 and size-1
     """
     return random.randint(0,size-1)
 
 
-def add_ships(board,ships):
+def add_ships(board,ships,player_type="player"):
     """
+    Add ships to board
     """
-    for t in range(ships):
-        x = ran_row(ships)
-        y = ran_col(ships)
-        player_ship_coordinate.append((x,y))
-        board[x][y] = "@"
+    if player_type != "player":
+        for n in range(ships):
+            a = ran_one(ships)
+            b = ran_one(ships)
+            board[a][b] = "#"
+            comp_ship_coordinate.append((a,b))
+    else:
+        for n in range(ships):
+            x = ran_two(ships)
+            y = ran_two(ships)
+            board[x][y] = "@"
+            player_ship_coordinate.append((x,y))
+            
+       
 
 
-def game_board(board,ships): 
+def game_board(board,ships,player_type=""): 
     """
+    Prints board(player or computer) with ships appended
     """
-    add_ships(board,ships)
-    pprint(board)
+    add_ships(board,ships,player_type)
+    #pprint(board)
     for r in board:
         g = (" ".join(r))
         print(g)
@@ -93,19 +104,25 @@ def new_game():
     print( "Welcome to our BATTLESHIPS GAME!")
     print("-----------------------------------")
     grid_size = int(g_size())
-    #print( "Number of ships: 4")
     print(f"Grid size(board): {grid_size}")
     num_ships = 4
     print(f"Number of ships : {num_ships}")
     print("-----------------------------------")
 
     # Game board without ships
-    g_board = [["." for i in range(grid_size)] for j in range(grid_size)]
-
+    player_board = [["." for i in range(grid_size)] for j in range(grid_size)]
+    computer_board = [["." for i in range(grid_size)] for j in range(grid_size)]
+    
     print("-----------------------------------")   
     name = input("Enter your name here:\n")
     print(f"{name}'s board")
-    game_board(g_board, num_ships)
+    game_board(player_board, num_ships,"player")
+
+    print(player_ship_coordinate)
+    print(" ")
+    print(f"Computer's board")
+    game_board(computer_board, num_ships,"computer")
+    print(comp_ship_coordinate)
 
 
 new_game()
