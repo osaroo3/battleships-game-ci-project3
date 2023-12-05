@@ -94,6 +94,15 @@ def game_board(board,ships,player_type=""):
     return(g)
 
 
+def turns(turn=""):
+    """
+    Handles both player and computer turns
+    """
+    if turn != "player_turn":
+        comp_turn("computer_turn")
+    else:
+        player_turn("player_turn")    
+
 def new_game():
     """
     Starts the game with board populated, while setting both computer and player score to zero
@@ -124,5 +133,7 @@ def new_game():
     game_board(computer_board, num_ships,"computer")
     print(comp_ship_coordinate)
 
+
+    turns("player_turn")
 
 new_game()
