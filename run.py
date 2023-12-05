@@ -94,14 +94,36 @@ def game_board(board,ships,player_type=""):
     return(g)
 
 
-def turns(turn=""):
+def player_turn(board,turn):
+    row = int(input("Enter a row : \n")) 
+    column =  int(input("Enter a column : \n")) 
+    print(f"You entered row:{row} column:{column}") 
+
+    if (row,column) not in comp_ship_coordinate:
+        print("You missed!")
+        player_guess_coordinate.append((row,column))
+        print(player_guess_coordinate)
+        board[row][column] = "X"
+
+    else:
+        print("You hit!")
+        player_guess_coordinate.append((row,column))
+        print(player_guess_coordinate)
+        board[row][column] = "*"
+        scores["player_score"] += 1
+
+        if scores["player_score"] == 1:
+            print("Player wins!")
+
+   
+def turns(board, turn=""):
     """
     Handles both player and computer turns
     """
     if turn != "player_turn":
-        comp_turn("computer_turn")
+        comp_turn(board, "computer_turn")
     else:
-        player_turn("player_turn")    
+        player_turn(board, "player_turn")    
 
 def new_game():
     """
@@ -126,7 +148,6 @@ def new_game():
     name = input("Enter your name here:\n")
     print(f"{name}'s board")
     game_board(player_board, num_ships,"player")
-
     print(player_ship_coordinate)
     print(" ")
     print(f"Computer's board")
@@ -134,6 +155,6 @@ def new_game():
     print(comp_ship_coordinate)
 
 
-    turns("player_turn")
+    turns(player_board, "player_turn")
 
 new_game()
