@@ -1,5 +1,4 @@
 import random
-from pprint import pprint
 
 
 scores = {
@@ -87,7 +86,7 @@ def game_board(board,ships,player_type=""):
     Prints board(player or computer) with ships appended
     """
     add_ships(board,ships,player_type)
-    #pprint(board)
+    
     for r in board:
         g = (" ".join(r))
         print(g)
