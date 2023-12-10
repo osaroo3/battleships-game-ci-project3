@@ -5,6 +5,8 @@ scores = {
     "computer_score" : 0,
     "player_score" : 0
 }
+PLAYER_SCORE = scores["player_score"]
+COMPUTER_SCORE = scores["computer_score"]
 grid_size = 5
 
 player_ship_coordinate = []
@@ -112,10 +114,9 @@ def player_turn(board,turn):
         player_guess_coordinate.append((row,column))
         print(player_guess_coordinate)
         board[row][column] = "*"
+        scores["player_score"]
         scores["player_score"] += 1
-
-        if scores["player_score"] == 1:
-            print("Player wins!")
+        
 
 
 def computer_turn(board,turn,size):
@@ -125,7 +126,8 @@ def computer_turn(board,turn,size):
     print("Computer's turn")
     row = random.randint(0,size-1)
     column =  random.randint(0,size-1)
-    print(f"Computer entered row:{row} column:{column}") 
+    
+    print(f"Computer entered row:{row} column:{column}\n") 
 
     if (row,column) not in player_ship_coordinate:
         print("Computer missed!")
@@ -138,11 +140,9 @@ def computer_turn(board,turn,size):
         comp_guess_coordinate.append((row,column))
         print(comp_guess_coordinate)
         board[row][column] = "*"
+        scores["computer_score"]
         scores["computer_score"] += 1
-
-        if scores["computer_score"] == 1:
-            print("Computer wins!")
-
+        
    
 def turns(board, turn="", size=""):
     """
@@ -152,6 +152,16 @@ def turns(board, turn="", size=""):
         computer_turn(board, "computer_turn",size)
     else:
         player_turn(board, "player_turn") 
+
+
+def count_hit_ships(board):
+    """This function counts the number of ships hit on a board."""
+    count = 0
+    for row in board:
+        for column in row:
+            if column == "*":
+                count += 1
+    return count
 
 
 def print_board(board):
@@ -190,15 +200,29 @@ def new_game():
     print(comp_ship_coordinate)
 
 
-    turns(computer_board, "player_turn", grid_size )
-    turns(player_board, "computer_turn", grid_size )
+    while True:
+        # Player turn
+        turns(computer_board, "player_turn", grid_size )
+        print(PLAYER_SCORE)
 
+        if count_hit_ships(computer_board) == 4:
+            print("Player wins!")
+            break
+        # Computer turn
+        turns(player_board, "computer_turn", grid_size )
+        print(COMPUTER_SCORE)
+        if count_hit_ships(player_board) == 4:
+            print("Computer wins!")
+            break
+        
     print(f"{name}'s board")
     print_board(player_board)
-    print(player_ship_coordinate)
     print(" ")
     print(f"Computer's board")
     print_board(computer_board)
-    print(comp_ship_coordinate)
+    print("-----------------------------------") 
+    print( "THANK YOU FOR PLAYING!")
+    print("-----------------------------------")
+
 
 new_game()
