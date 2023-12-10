@@ -67,14 +67,14 @@ def add_ships(board,ships,player_type="player"):
     """
     if player_type != "player":
         for n in range(ships):
-            a = ran_one(ships)
-            b = ran_one(ships)
+            a = ran_one(grid_size)
+            b = ran_one(grid_size)
             board[a][b] = "#"
             comp_ship_coordinate.append((a,b))
     else:
         for n in range(ships):
-            x = ran_two(ships)
-            y = ran_two(ships)
+            x = ran_two(grid_size)
+            y = ran_two(grid_size)
             board[x][y] = "@"
             player_ship_coordinate.append((x,y))
             
@@ -90,10 +90,13 @@ def game_board(board,ships,player_type=""):
     for r in board:
         g = (" ".join(r))
         print(g)
-    return(g)
 
 
 def player_turn(board,turn):
+    """
+    Function handles player turn, appends guesses to player guess list and computer board
+    """
+    print("Player's turn")
     row = int(input("Enter a row : \n")) 
     column =  int(input("Enter a column : \n")) 
     print(f"You entered row:{row} column:{column}") 
@@ -114,15 +117,48 @@ def player_turn(board,turn):
         if scores["player_score"] == 1:
             print("Player wins!")
 
+
+def computer_turn(board,turn,size):
+    """
+    Function handles computer turn, appends guesses to computer guess list and player board
+    """
+    print("Computer's turn")
+    row = random.randint(0,size-1)
+    column =  random.randint(0,size-1)
+    print(f"Computer entered row:{row} column:{column}") 
+
+    if (row,column) not in player_ship_coordinate:
+        print("Computer missed!")
+        comp_guess_coordinate.append((row,column))
+        print(comp_guess_coordinate)
+        board[row][column] = "X"
+
+    else:
+        print("Computer hit!")
+        comp_guess_coordinate.append((row,column))
+        print(comp_guess_coordinate)
+        board[row][column] = "*"
+        scores["computer_score"] += 1
+
+        if scores["computer_score"] == 1:
+            print("Computer wins!")
+
    
-def turns(board, turn=""):
+def turns(board, turn="", size=""):
     """
     Handles both player and computer turns
     """
     if turn != "player_turn":
-        comp_turn(board, "computer_turn")
+        computer_turn(board, "computer_turn",size)
     else:
-        player_turn(board, "player_turn")    
+        player_turn(board, "player_turn") 
+
+
+def print_board(board):
+    for n in board:
+        g_b = (" ".join(n))
+        print(g_b)
+
 
 def new_game():
     """
@@ -154,6 +190,15 @@ def new_game():
     print(comp_ship_coordinate)
 
 
-    turns(player_board, "player_turn")
+    turns(computer_board, "player_turn", grid_size )
+    turns(player_board, "computer_turn", grid_size )
+
+    print(f"{name}'s board")
+    print_board(player_board)
+    print(player_ship_coordinate)
+    print(" ")
+    print(f"Computer's board")
+    print_board(computer_board)
+    print(comp_ship_coordinate)
 
 new_game()
