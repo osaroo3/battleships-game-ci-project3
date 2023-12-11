@@ -37,17 +37,59 @@ def validate_g_size(value):
     Validate user input to set the grid(board) size
     """
     try:
-        grid_type =[5,6]
+        grid_type =[6,7,8]
         value = int(value)
         if value not in grid_type :
             raise ValueError(
-                f"Number 5 or 6 is required, you provided {value}"
+                f"Number 6,7 or 8 is required, you provided {value}"
             )
         
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
     return True
+
+def validate_input(coord="row",size=""):
+    """
+    set inputs coordinates for targerting ships
+    """
+    while True:
+        if coord != "row":
+            data = input("Enter a column : \n")
+            validate_coordinates(data,size)
+            if validate_coordinates(data,size):
+                print("Number is valid!")
+                break
+
+        else:
+            data = input("Enter a row : \n") 
+            validate_coordinates(data,size)
+            if validate_coordinates(data,size):
+                print("Number is valid!")
+                break
+
+    return data 
+
+
+def validate_coordinates(value,size):
+    """
+    Validates input coordinates to target ships
+    """
+    try:
+        value = int(value)
+        value_list = []
+        for i in range(size):
+            value_list.append(i)
+        if value not in value_list:
+            raise ValueError(
+                f"Number must be 0 or {size-1} , you provided {value}"
+            )
+        
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+    return True
+
 
 def ran_one(size):
     """
@@ -79,9 +121,7 @@ def add_ships(board,ships,player_type="player"):
             y = ran_two(grid_size)
             board[x][y] = "@"
             player_ship_coordinate.append((x,y))
-            
-       
-
+                   
 
 def game_board(board,ships,player_type=""): 
     """
@@ -104,25 +144,23 @@ def count_ship_hits(board):
     return count
 
 
-def player_turn(board,turn):
+def player_turn(board,turn,size):
     """
     Function handles player turn, appends guesses to player guess list and computer board
     """
     print("\nPlayer's turn")
-    row = int(input("Enter a row : \n")) 
-    column =  int(input("Enter a column : \n")) 
+    row = int(validate_input("row", size))
+    column = int(validate_input("column", size))
     print(f"You entered row:{row} column:{column}") 
 
     if (row,column) not in comp_ship_coordinate:
         print("You missed!")
         player_guess_coordinate.append((row,column))
-        print(player_guess_coordinate)
         board[row][column] = "X"
 
     else:
         print("You hit!")
         player_guess_coordinate.append((row,column))
-        print(player_guess_coordinate)
         board[row][column] = "*"
         scores["player_score"] = count_ship_hits(board)
         PLAYER_SCORE = scores["player_score"]
@@ -136,24 +174,20 @@ def computer_turn(board,turn,size):
     print("\nComputer's turn")
     row = random.randint(0,size-1)
     column =  random.randint(0,size-1)
-    
     print(f"Computer entered row:{row} column:{column}") 
-
     if (row,column) not in player_ship_coordinate:
         print("Computer missed!")
         comp_guess_coordinate.append((row,column))
-        print(comp_guess_coordinate)
         board[row][column] = "X"
-
     else:
         print("Computer hit!")
         comp_guess_coordinate.append((row,column))
-        print(comp_guess_coordinate)
         board[row][column] = "*"
         scores["computer_score"] = count_ship_hits(board)
         COMPUTER_SCORE = scores["computer_score"]
         print(f"Computer score: {COMPUTER_SCORE}")
-   
+
+  
 def turns(board, turn="", size=""):
     """
     Handles both player and computer turns
@@ -161,7 +195,7 @@ def turns(board, turn="", size=""):
     if turn != "player_turn":
         computer_turn(board, "computer_turn",size)
     else:
-        player_turn(board, "player_turn") 
+        player_turn(board, "player_turn",size) 
 
 
 def print_board(board):
