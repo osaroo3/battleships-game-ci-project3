@@ -203,7 +203,7 @@ def new_game():
     while True:
         # Player turn
         turns(computer_board, "player_turn", grid_size )
-        print(f"Computer's board")
+        print("Computer's board")
         print_board(computer_board)
         
         if count_ship_hits(computer_board) == 4:
@@ -213,6 +213,7 @@ def new_game():
             break
         # Computer turn
         turns(player_board, "computer_turn", grid_size )
+        print("Player's board")
         print_board(player_board)
         
         if count_ship_hits(player_board) == 4:
