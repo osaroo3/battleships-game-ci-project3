@@ -1,17 +1,13 @@
 import random
 
-
 scores = {
     "computer_score" : 0,
     "player_score" : 0
 }
 
-COMPUTER_SCORE = scores["computer_score"]
 grid_size = 5
-
 player_ship_coordinate = []
 player_guess_coordinate = []
-
 comp_ship_coordinate = []
 comp_guess_coordinate = []
 
@@ -51,7 +47,7 @@ def validate_g_size(value):
 
 def validate_input(coord="row",size=""):
     """
-    set inputs coordinates for targerting ships
+    validate player inputs coordinates 
     """
     while True:
         if coord != "row":
@@ -73,7 +69,7 @@ def validate_input(coord="row",size=""):
 
 def validate_coordinates(value,size):
     """
-    Validates input coordinates to target ships
+    Validates input coordinates to ensure the are within board grid
     """
     try:
         value = int(value)
@@ -93,9 +89,9 @@ def validate_coordinates(value,size):
 
 def ran_one(size):
     """
-    Random number between 1 and size-1
+    Random number between 0 and size-1
     """
-    return random.randint(1,size-1)
+    return random.randint(0,size-1)
 
 
 def ran_two(size):
@@ -112,12 +108,12 @@ def add_ships(board,ships,player_type="player"):
     if player_type != "player":
         for n in range(ships):
             a = ran_one(grid_size)
-            b = ran_one(grid_size)
+            b = ran_two(grid_size)
             board[a][b] = "#"
             comp_ship_coordinate.append((a,b))
     else:
         for n in range(ships):
-            x = ran_two(grid_size)
+            x = ran_one(grid_size)
             y = ran_two(grid_size)
             board[x][y] = "@"
             player_ship_coordinate.append((x,y))
@@ -163,8 +159,8 @@ def player_turn(board,turn,size):
         player_guess_coordinate.append((row,column))
         board[row][column] = "*"
         scores["player_score"] = count_ship_hits(board)
-        PLAYER_SCORE = scores["player_score"]
-        print(f"Player score: {PLAYER_SCORE}")
+        score = scores["player_score"]
+        print(f"Player score: {score}")
         
         
 def computer_turn(board,turn,size):
@@ -184,8 +180,8 @@ def computer_turn(board,turn,size):
         comp_guess_coordinate.append((row,column))
         board[row][column] = "*"
         scores["computer_score"] = count_ship_hits(board)
-        COMPUTER_SCORE = scores["computer_score"]
-        print(f"Computer score: {COMPUTER_SCORE}")
+        score = scores["computer_score"]
+        print(f"Computer score: {score}")
 
   
 def turns(board, turn="", size=""):
@@ -261,6 +257,9 @@ def new_game():
     print(" ")
     print(f"Computer's board")
     print_board(computer_board)
+    PLAYER_SCORE = count_ship_hits(player_board)
+    COMPUTER_SCORE = count_ship_hits(computer_board)
+    print(f"\nPlayer score: {COMPUTER_SCORE} Computer score: {PLAYER_SCORE}")
     print("-----------------------------------") 
     print( "THANK YOU FOR PLAYING!")
     print("-----------------------------------")
