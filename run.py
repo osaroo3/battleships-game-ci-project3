@@ -259,7 +259,7 @@ def new_game():
     print_board(computer_board)
     PLAYER_SCORE = count_ship_hits(player_board)
     COMPUTER_SCORE = count_ship_hits(computer_board)
-    print(f"\nPlayer score: {COMPUTER_SCORE} Computer score: {PLAYER_SCORE}")
+    print(f"\n{name}'s score: {COMPUTER_SCORE} Computer score: {PLAYER_SCORE}")
     print("-----------------------------------") 
     print( "THANK YOU FOR PLAYING!")
     print("-----------------------------------")
