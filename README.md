@@ -4,6 +4,12 @@ The idea behind this project, was to have a battleships game for game lovers to 
 
 The game is played against computer, and the goal is to win i.e by destroying all the ships of computer before it does same to yours.
 
+## How to play
+
+This battleships game follows the classic pen and paper game. To read more visit [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
+In this version, player gets the preference to select grid size. The grid has being restricted to 6,7,and 8.
+The player is required to enter their name after grid has being set. Then the game board for both player and computer is printed to the terminal. Players can see their ships but not computer ships. The first row is row 0 and the first dot represents column 0. If you guess the right coordinates you hit computers ships, this goes for computer too. When all opponent ships have been hit a winner emerge. 
+
 Click [here](https://battleships-game-ci-project3-baac25174f1e.herokuapp.com/) to go to the live link.
 
 
@@ -19,11 +25,6 @@ Click [here](https://battleships-game-ci-project3-baac25174f1e.herokuapp.com/) t
   - [Features](#features)
     - [Existing Features](#existing-features)
     - [Languages Used](#languages-used)
-    - [Navigation](#navigation)
-    - [Background photo](#background-photo)
-    - [Home Page](#home-page)
-      - [Quiz Section](#quiz-section)
-      - [Feedback Section](#feedback-section)
   - [Future Features](#future-features)
 - [Testing](#testing)
   - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
@@ -41,74 +42,61 @@ Click [here](https://battleships-game-ci-project3-baac25174f1e.herokuapp.com/) t
 ## User Stories
 
 - First Time Visitor Goals
-  - As a first time visitor, I want to know the purpose of this site.
+  - As a first time visitor, I want to know the purpose of the game site.
   - As a first time visitor, I want navigate the site intuitively.
   - As a first time visitor, I want to look for testimonials to know what others think.
 
 - Returning Visitor Goals
   
-  - As a returning visitor, I want to see what changes/ improvements have been made to the site.
+  - As a returning visitor, I want to see what improvements have been made.
 
 - Frequent User Goals
 
-  - As a frequent user, I want to see if new quiz questions have been added.
+  - As a frequent user, I want to see if users can add their own ships.
   - As a frequent user, I want to see if the comments of users impact changes on the site.
 
 # Design
 
-The choice of color, typography and images, used were chosen for simplicity and, also for how visually appealing they can be to site users.
+The design decision was to keep it simple and intuive for users.
 
 ## Features
 
 ### Existing Features
+- Player is required to set the grid(board) size.
+- Player entry passes through validation ads board size is restricted to 6,7, and 8.
+- Player is required to enter their name.
+- Random board generation
+    - Both player and computer ships are randomly generated and placed on their respective boards.
+    - Player is restricted from seeing computer ships location on the computer board.
+- Player coordinates are required to target computer ships.
+- Player coordinates pass through validation checks.
+    - Coordinates must be within grid size.
+    - Only numbers are accepted.
+- Maintain player score when computer ships are hit.
+- Computer coordinates are required to target player ships.
+- Maintain computer score when player ships are hit.
+- At game over, a winner a winner is declared, and scores of both player and computer are presented.
 
 ### Languages Used
 
-- HTML5
-- CSS3
-- JavaScript
-
-### Navigation
-
-There is one navigation included in this site. It is linked to the send button-like div to receive users feedback. Once that "send" is clicked it navigates to the index page.
-
-![Send button Navigation](assets/readme-images/send.PNG)
-
-### Background photo
-
-A main photo is used in the index page to capture the users attention, expecially as it is the official logo of the 2022 FIFA world cup held in Qatar.
-
-![Background photo](assets/images/fifa-world-cup.svg.png)
-
-### Home Page
-
-This page engages with our site users, by providing information about the quiz, which helps our users exercise their wits.
-
-![Home page image?](assets/readme-images/home-page.PNG)
-
-#### Quiz Section
-
-The quiz section is on the index page...just hidden, only to be revealed when the user enters a username. The user has to scroll down to access othe quiz questions.
-
-![Quiz photo](assets/readme-images/quiz-photo.PNG)
-
-#### Feedback Section
-
-The feedback section exists to get users reaction and possible ideas to improve the quiz page.
-
-![Feedback photo](assets/readme-images/feedback-photo.PNG)
+- Python
 
 ## Future Features
 
-- Make th quiz display one by one, with the next page coming up once the user clicks next.
-- Add more questions and include quiz from othe world cup years.
-- Add testimonies of users who take the quiz.
+- Player can place ships on board.
+- Restrict player from using target coordinates more than once.
 
 # Testing
 
-I have checked to confirm that the user cannot access the quiz without providing a username.
+Passed through PEP8 linter without issues.
 
-I have ensured that this project is responsive on all screens.
+Tested on both codeanywhere terminal and code institutes Heroku terminal.
+
+I have checked to confirm that the user can set grid size.
+
+Both user and computer can destroy opponents ships with the right coordinates.
+
+The game ends when 4 player or computers ships have been destroyed, and a winner is declared
 
 ## Testing User Stories from User Experience (UX) Section
 
