@@ -7,11 +7,11 @@ The game is played against computer, and the goal is to win i.e by destroying al
 Click [here](https://battleships-game-ci-project3-baac25174f1e.herokuapp.com/) to go to the live link.
 
 
-![Am I Responsive Index Image](assets/readme-images/am-i-responsive-image.PNG)
+![Am I Responsive Index Image](assets/readme-images/battleship-game.PNG)
 
 # Table of content
 
-- [ Battleships Game CI Project 3](# Battleships Game-ci-project-3)
+- [Battleships Game CI Project 3](#Battleships-Game-ci-project-3)
 - [Table of content](#table-of-content)
 - [User Experience (UX)](#user-experience-ux)
   - [User Stories](#user-stories)
