@@ -100,40 +100,34 @@ The game ends when 4 player or computers ships have been destroyed, and a winner
 
 ## Testing User Stories from User Experience (UX) Section
 
+
 - First Time Visitor Goals
-  - As a first time visitor, I want to know the purpose of this site.
-      1. Every first time visitor can clearly see that this is a FIFA world cup quiz site.
-      2. The site is there to test their sports knowledge about football.
-  - As a first time visitor, I want navigate the site intuitively.
-      1. Navigating the site is very intuitive, as how to navigate the site is easy and, the needed response from users are clear and unambiguous.
+  - As a first time visitor, I want to know the purpose of the game site.
+      1. Every first time visitor can clearly see that this is a battle ships game.
+      2. The site is there for game lovers to have fun.
+ - As a first time visitor, I want navigate the site intuitively.
+      1. Navigating the gate site is very intuitive.
   - As a first time visitor, I want to look for testimonials to know what others think.
-      1. At the moment testimonies of users are not public yet. That is currently under consideration.
+      1. This feature has not been added yet.
 
 - Returning Visitor Goals
   
-  - As a returning visitor, I want to see what changes/ improvements have been made to the site.
-      1. Further changes are currently under consideration, however, there is no specific time for their implementation.
+  - As a returning visitor, I want to see what improvements have been made.
+
+      1. Further changes are under consideration. No changes yet.
 
 - Frequent User Goals
 
-  - As a frequent user, I want to see if new quiz questions have been added.
-      1. No new changes to the site yet.
-  - As a frequent user, I want to see if the comments of users impact changes on the site.
-      1. It certainly will. However, implementation is yet to take place.
+  - As a frequent user, I want to see if users can add their own ships.
+      1. This feature has not been added yet.
+  -  As a frequent user, I want to see if the comments of users impact changes on the site.
+      1. It should. However, no implementation yet.
 
 ## Validator Testing
 
-- HTML: No errors or warnings shown when passed via the official W3C validator:
+- Python: No errors or warnings shown when passed via the PEP8 linter:
 
-![W3C HTML Validator Check](assets/readme-images/html-validation-photo.PNG)
-
-- CSS: No errors shown when passed via the official (Jigsaw) validator:
-
-![W3C CSS Validator Check](assets/readme-images/css-validation-photo.PNG)
-
--js: No errors were found.
-
-![JSHint Validator Check](assets/readme-images/jshint-validation-photo.PNG)
+![PEP8 linter Validator Check](assets/readme-images/pep8-check.PNG)
 
 -Lighthouse audit: Archieved 100% accessiblity, best practices and SEO checks. However, the site performance is at 74% - the lowest. This issue has to do with my chrome extension.
 
