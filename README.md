@@ -10,8 +10,6 @@ This battleships game follows the classic pen and paper game. To read more visit
 In this version, player gets the preference to select grid size. The grid has being restricted to 6,7,and 8.
 The player is required to enter their name after grid has being set. Then the game board for both player and computer is printed to the terminal. Players can see their ships but not computer ships. The first row is row 0 and the first dot represents column 0. If you guess the right coordinates you hit computers ships, this goes for computer too. When all opponent ships have been hit a winner emerge. 
 
-Click [here](https://battleships-game-ci-project3-baac25174f1e.herokuapp.com/) to go to the live link.
-
 
 ![Am I Responsive Index Image](assets/readme-images/battleship-game.PNG)
 
@@ -77,7 +75,7 @@ The design decision was to keep it simple and intuive for users.
 - Maintain computer score when player ships are hit.
 - At game over, a winner a winner is declared, and scores of both player and computer are presented.
 
-### Languages Used
+### Language Used
 
 - Python
 
@@ -96,7 +94,7 @@ I have checked to confirm that the user can set grid size.
 
 Both user and computer can destroy opponents ships with the right coordinates.
 
-The game ends when 4 player or computers ships have been destroyed, and a winner is declared
+The game ends when 4 player or computers ships have been destroyed, and a winner is declared.
 
 ## Testing User Stories from User Experience (UX) Section
 
@@ -129,57 +127,53 @@ The game ends when 4 player or computers ships have been destroyed, and a winner
 
 ![PEP8 linter Validator Check](assets/readme-images/pep8-check.PNG)
 
--Lighthouse audit: Archieved 100% accessiblity, best practices and SEO checks. However, the site performance is at 74% - the lowest. This issue has to do with my chrome extension.
+-Lighthouse audit: 
 
 ![Lighthouse Accessibility Audit](assets/readme-images/lighthouse-report-photo.PNG)
 
 ## Fixed Bug
 
-- I was'nt able to call the user's name entry before telling them their quiz score. This issue was based on the variable assigned to the name entry being block scoped. I fixed this issue by declaring the variable outside the scope making it a global varaiable.
+- When printing final score for both player and computer at game over, player score was assigned to computer and vice versa. I noticed, that I was checking the ships they destroyed on their respective board rather than the board of their opponent.
 
 ## Unfixed Bugs
 
-- Yet to fix my chrome extension issues affecting the site's performance rating.
+- The validation statement when a wrong value is entered prints twice.
 
 ## Libraries and Programs Used
 
 - Github: To Store Repository
-- Codeanywhere: To Create the html and css files
-- Google Fonts: Font-family 'Open Sans' and fallback "sans serif"
+- Codeanywhere: To Create the Python file.
 - Google Chrome Dev Tools: For testing.
 - Microsoft Edge: Alternative browser for site testing
-- Font Awesome: Social media icons
-- Am I Responsive: Getting image of how the webpage renders on different screen sizes.
+- Am I Responsive: Getting image of how the page renders on different screen sizes.
 
 # Deployment
 
-The site was deployed to GitHub pages. The steps or deploy are shwon below:
+The site code is stored on GitHub repository, but deployed on Heroku from GitHub. The steps to deploy are shown below:
 
-  1. Go to GitHub repository, click on the project.
-  2. Click 'settings' and also click 'Pages'.
-  3. Select 'Main' from drop-down menu under branch, and click save.
-  4. A link to the live page will appear .
+  1. Create an account on [Heroku](https://id.heroku.com/login).
+  2. If eligible activate Heroku student pack and set up payment process. Following the instructions in the links. [link1](https://www.heroku.com/github-students) [link2](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/e3b664e16366444c8d722c5d8340b340/).
+  3. Go to dashboard and click create a new app. Choose a unique name for your app, choose your region and click create. 
+  4. Go to setting, click on reveal config vars, for key use "PORT" and for value use "8000" and save.
+  5. Add build packs, choose python first, and save before nodejs. 
+  6. Exit settings and go to "deploy". Select GitHub and then click connect. Choose the app you want to deploy from your GitHub repository.
+  7. Click deploy branch or select automatic deploys before deploy branch.
+  8. After deployement is successful, a live link appears.
 
-The live link for this site can be found here -[link](https://osaroo3.github.io/world-cup-quiz-ci-project2/index.html)
+The live link can be found here -[here](https://battleships-game-ci-project3-baac25174f1e.herokuapp.com/)
 
 # Credits
 
-I wish to thank my mentor Martina Terlevic for all the support so far, and to Code Institute and its slack community, I say a big thanks.
+I wish to thank my mentor Martina Terlevic for all the support so far, and of course the Code Institute community.
 
-1. The tools to make this page come alive comes from Code Institutes Love maths, love running walkthrough project and Aerobic yoga project 1.
-2. I acknowledge Code Institute's sample README and Tulkerfaulk for the readme file structure.
-3. The correct and incorrect scores counter code was gotten from love maths.
+1. The love sandwich walkthrough project and the CI Ultimate Battleships game provided great help.
+2. I acknowledge Code Institute's sample README and [Tulkerfaulk](https://github.com/TuckerFaulk/) for the readme file structure.
+3. The scores counter code idea was from [Karroroenning](https://github.com/Karroroenning/battleship).
+4. The game board code idea was from Code Institutes Ultimate Battleships Game example. 
 
 ## Content
 
-The quiz content was sourced from : [FIFA](https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/qatar2022/scores-fixtures?country=GB&wtw-filter=ALL)
-
+The game content idea was from v and [wikipedia](https://en.wikipedia.org/wiki/Battleship_(game))
 ## Media
 
-Images:
-
-The FIFA trophy image was sourced from : [Google search](https://www.aljazeera.com/sports/2023/3/14/fifa-confirms-expanded-2026-world-cup-with-record-104-matches)
-
-The offial 2022 world cup image was sourced from : [Google search](https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/2022_FIFA_World_Cup.svg/800px-2022_FIFA_World_Cup.svg.png)
-
-The faveicon was sourced from : [Flaticon](https://www.flaticon.com/free-icon/world-cup_8861317?term=world+cup&page=1&position=2&origin=search&related_id=8861317)
+All images used are screenshots of this project.
