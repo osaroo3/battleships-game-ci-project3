@@ -5,6 +5,8 @@ scores = {
     "player_score": 0
 }
 
+PLAYER_TURN = "player_turn"
+COMPUTER_TURN = "computer_turn"
 grid_size = 6
 player_ship_coordinate = []
 player_guess_coordinate = []
@@ -82,7 +84,7 @@ def validate_coordinates(value, size):
             )
 
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print(f"Invalid entry: {e}, please try again.\n")
         return False
     return True
 
@@ -92,6 +94,7 @@ def ran_num(size):
     Generate random number between 0 and size-1
     """
     return random.randint(0, size-1)
+
 
 def add_ships(board, ships, player_type="player"):
     """
@@ -164,7 +167,7 @@ def computer_turn(board, turn, size):
     print("\nComputer's turn")
     row = ran_num(size)
     column = ran_num(size)
-    print(f"Computer entered row:{row} column:{column}")
+    print(f"Computer entered row: {row} column: {column}")
     if (row, column) not in player_ship_coordinate:
         print("Computer missed!")
         comp_guess_coordinate.append((row, column))
@@ -182,8 +185,6 @@ def turns(board, turn="", size=""):
     """
     Handles both player and computer turns
     """
-    PLAYER_TURN = "player_turn"
-    COMPUTER_TURN = "computer_turn"
     if turn != "player_turn":
         computer_turn(board, PLAYER_TURN, size)
     else:
@@ -226,7 +227,7 @@ def new_game():
     print(comp_ship_coordinate)
     while True:
         # Player turn
-        turns(computer_board, "player_turn", grid_size)
+        turns(computer_board, PLAYER_TURN, grid_size)
         print("Computer's board")
         print_board(computer_board)
         if count_ship_hits(computer_board) == 4:
@@ -235,7 +236,7 @@ def new_game():
             print("-----------------------------------")
             break
         # Computer turn
-        turns(player_board, "computer_turn", grid_size)
+        turns(player_board, COMPUTER_TURN, grid_size)
         print("Player's board")
         print_board(player_board)
         if count_ship_hits(player_board) == 4:

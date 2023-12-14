@@ -61,19 +61,48 @@ The design decision was to keep it simple and intuive for users.
 
 ### Existing Features
 - Player is required to set the grid(board) size.
-- Player entry passes through validation ads board size is restricted to 6,7, and 8.
-- Player is required to enter their name.
+
+    ![Set grid size](assets/readme-images/grid-size.PNG)
+
+- Player entry passes through validation as board size is restricted to 6,7, and 8.
+
+    ![Grid size validation](assets/readme-images/grid-size-validation.PNG)
+
+- Player is required to enter name.
+
+    ![Enter player name](assets/readme-images/enter-name.PNG)
+
 - Random board generation
     - Both player and computer ships are randomly generated and placed on their respective boards.
     - Player is restricted from seeing computer ships location on the computer board.
+
+    ![Player and computer Board generation](assets/readme-images/board-generation.PNG)
+
 - Player coordinates are required to target computer ships.
+
+    ![Player coordinate](assets/readme-images/target-ships.PNG)
+
 - Player coordinates pass through validation checks.
     - Coordinates must be within grid size.
     - Only numbers are accepted.
+
+    ![Player coordinate validation](assets/readme-images/player-coordinate-validation.PNG)
+
 - Maintain player score when computer ships are hit.
+
+    ![Maintain player score](assets/readme-images/maintain-player-score.PNG)
+
 - Computer coordinates are required to target player ships.
+
+    ![Computer coordinate](assets/readme-images/target-ships.PNG)
+
 - Maintain computer score when player ships are hit.
-- At game over, a winner a winner is declared, and scores of both player and computer are presented.
+
+    ![Maintain computer score](assets/readme-images/maintain-computer-score.PNG)
+
+- At game over, a winner is declared, and scores of both player and computer are presented.
+
+    ![Game over](assets/readme-images/final-score.PNG)
 
 ### Language Used
 
@@ -127,10 +156,6 @@ The game ends when 4 player or computers ships have been destroyed, and a winner
 
 ![PEP8 linter Validator Check](assets/readme-images/pep8-check.PNG)
 
--Lighthouse audit: 
-
-![Lighthouse Accessibility Audit](assets/readme-images/lighthouse-report-photo.PNG)
-
 ## Fixed Bug
 
 - When printing final score for both player and computer at game over, player score was assigned to computer and vice versa. I noticed, that I was checking the ships they destroyed on their respective board rather than the board of their opponent.
@@ -138,9 +163,11 @@ The game ends when 4 player or computers ships have been destroyed, and a winner
 ## Unfixed Bugs
 
 - The validation statement when a wrong value is entered prints twice.
+- Sometimes the number of ships randomly generated for player and computer is not always 4 as expected.
 
 ## Libraries and Programs Used
 
+- Random: for generating random number.
 - Github: To Store Repository
 - Codeanywhere: To Create the Python file.
 - Google Chrome Dev Tools: For testing.
