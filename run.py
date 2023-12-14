@@ -87,19 +87,11 @@ def validate_coordinates(value, size):
     return True
 
 
-def ran_one(size):
+def ran_num(size):
     """
-    Random number between 0 and size-1
-    """
-    return random.randint(0, size-1)
-
-
-def ran_two(size):
-    """
-    Random number between 0 and size-1
+    Generate random number between 0 and size-1
     """
     return random.randint(0, size-1)
-
 
 def add_ships(board, ships, player_type="player"):
     """
@@ -107,14 +99,14 @@ def add_ships(board, ships, player_type="player"):
     """
     if player_type != "player":
         for n in range(ships):
-            a = ran_one(grid_size)
-            b = ran_two(grid_size)
-            board[a][b] = "#"
+            a = ran_num(grid_size)
+            b = ran_num(grid_size)
+            board[a][b] = "."
             comp_ship_coordinate.append((a, b))
     else:
         for n in range(ships):
-            x = ran_one(grid_size)
-            y = ran_two(grid_size)
+            x = ran_num(grid_size)
+            y = ran_num(grid_size)
             board[x][y] = "@"
             player_ship_coordinate.append((x, y))
 
@@ -170,8 +162,8 @@ def computer_turn(board, turn, size):
     appends guesses to computer guess list and player board
     """
     print("\nComputer's turn")
-    row = random.randint(0, size-1)
-    column = random.randint(0, size-1)
+    row = ran_num(size)
+    column = ran_num(size)
     print(f"Computer entered row:{row} column:{column}")
     if (row, column) not in player_ship_coordinate:
         print("Computer missed!")
@@ -190,10 +182,12 @@ def turns(board, turn="", size=""):
     """
     Handles both player and computer turns
     """
+    PLAYER_TURN = "player_turn"
+    COMPUTER_TURN = "computer_turn"
     if turn != "player_turn":
-        computer_turn(board, "computer_turn", size)
+        computer_turn(board, PLAYER_TURN, size)
     else:
-        player_turn(board, "player_turn", size)
+        player_turn(board, COMPUTER_TURN, size)
 
 
 def print_board(board):
@@ -229,6 +223,7 @@ def new_game():
     print(" ")
     print(f"Computer's board")
     game_board(computer_board, num_ships, "computer")
+    print(comp_ship_coordinate)
     while True:
         # Player turn
         turns(computer_board, "player_turn", grid_size)
