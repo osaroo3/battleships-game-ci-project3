@@ -84,7 +84,7 @@ def validate_coordinates(value, size):
             )
 
     except ValueError as e:
-        print(f"Invalid entry: {e}, please try again.\n")
+        print(f"Invalid entry: {e}, please try again\n")
         return False
     return True
 
