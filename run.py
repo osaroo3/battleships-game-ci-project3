@@ -42,7 +42,7 @@ def validate_g_size(value):
             )
 
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print(f"Invalid entry: {e}, please try again.\n")
         return False
     return True
 
