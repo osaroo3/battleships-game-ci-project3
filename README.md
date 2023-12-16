@@ -200,7 +200,7 @@ I wish to thank my mentor Martina Terlevic for all the support so far, and of co
 
 ## Content
 
-The game content idea was from v and [wikipedia](https://en.wikipedia.org/wiki/Battleship_(game))
+The game content idea was from Code Institutes Ultimate Battleships Game and [wikipedia](https://en.wikipedia.org/wiki/Battleship_(game))
 ## Media
 
 All images used are screenshots of this project.

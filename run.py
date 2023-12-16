@@ -106,6 +106,7 @@ def add_ships(board, ships, player_type="player"):
             b = ran_num(grid_size)
             board[a][b] = "."
             comp_ship_coordinate.append((a, b))
+        print(comp_ship_coordinate)   
     else:
         for n in range(ships):
             x = ran_num(grid_size)
@@ -224,7 +225,6 @@ def new_game():
     print(" ")
     print(f"Computer's board")
     game_board(computer_board, num_ships, "computer")
-    print(comp_ship_coordinate)
     while True:
         # Player turn
         turns(computer_board, PLAYER_TURN, grid_size)
