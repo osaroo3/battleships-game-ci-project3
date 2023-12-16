@@ -80,7 +80,7 @@ def validate_coordinates(value, size):
             value_list.append(i)
         if value not in value_list:
             raise ValueError(
-                f"Number must be 0 or {size-1} , you provided {value}"
+                f"Number must be between 0 and {size-1} , you provided {value}"
             )
 
     except ValueError as e:
@@ -106,7 +106,6 @@ def add_ships(board, ships, player_type="player"):
             b = ran_num(grid_size)
             board[a][b] = "."
             comp_ship_coordinate.append((a, b))
-        print(comp_ship_coordinate)   
     else:
         for n in range(ships):
             x = ran_num(grid_size)

@@ -193,7 +193,7 @@ The live link can be found here -[here](https://battleships-game-ci-project3-baa
 
 I wish to thank my mentor Martina Terlevic for all the support so far, and of course the Code Institute community.
 
-1. The love sandwich walkthrough project and the CI Ultimate Battleships game provided great help.
+1. The love sandwiches walkthrough project and the CI Ultimate Battleships game provided great help.
 2. I acknowledge Code Institute's sample README and [Tulkerfaulk](https://github.com/TuckerFaulk/) for the readme file structure.
 3. The scores counter code idea was from [Karroroenning](https://github.com/Karroroenning/battleship).
 4. The game board code idea was from Code Institutes Ultimate Battleships Game example. 
